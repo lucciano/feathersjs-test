@@ -1,0 +1,70 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "secret": "96c3fbc02d5b3befac3f9a9018083695ca0838ebb12d957da6492ee4e8657c9f879ec916f90ecbc5d503abd3eee6851d7675154f7a5b29e442e64da7e657582c99c968c5ef9fd326c312fa8f4c41f08e776342ee78e918e27f6ce3938679b635772f4eecf0af85fb61e53d5911eee6c5c4058c173599555cc9bd54c54889012f89054b7b52c1c327da9f8999d50b3c7169c812967d1cad1abeccc39a20deb27d0736988b4cb2c195aa493e8089067a6b55250fa62fa6afec39d7758d88e5755b635173faefbb6c8e4bc5f0441225da69e6fb8f6d5dc5474d5b0237cc7c6ab428666d0170db0385bf22e83a785f6dba30e2210db4bad291ea4206f057ecfbc9c8",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "service": "users",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "facebook": {
+      "clientID": "your facebook client id",
+      "clientSecret": "your facebook client secret",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  },
+  "nedb": "../data"
+}
