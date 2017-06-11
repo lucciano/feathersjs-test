@@ -1,5 +1,7 @@
 const { authenticate } = require('feathers-authentication').hooks;
 
+const populateTeams = require('../../hooks/populate-teams');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
@@ -13,7 +15,7 @@ module.exports = {
 
   after: {
     all: [],
-    find: [],
+    find: [populateTeams()],
     get: [],
     create: [],
     update: [],
